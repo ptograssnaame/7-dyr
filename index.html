@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Чек-лист и разбор 7 технических дыр, из-за которых гайд не продаётся.">
+<title>Гайд «7 дыр»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: одна узкая колонка «как в телефоне», тёмный фирменный фон в клетку, чек-лист с живым подсчётом сверху, дальше разбор дыр по порядку. */
+:root{
+  --bg:#0E0F13; --surface:#16181E; --line:#262932; --fg:#F2F2F0; --muted:#A9ABB3;
+  --accent:#7CF29C; --accent-ink:#0E0F13; --warn:#FFD66B; --bad:#FF9C8C;
+  --display:'Unbounded','Golos Text',system-ui,sans-serif;
+  --body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:40px 40px}
+.wrap{max-width:680px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(30px,8vw,46px);line-height:1.08;font-weight:800}
+h2{font-size:clamp(22px,5.4vw,30px);line-height:1.15;font-weight:800}
+h3{font-size:19px;line-height:1.25;font-weight:600}
+p{margin:0}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.muted{color:var(--muted)}
+.acc{color:var(--accent)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 200px;gap:20px;align-items:end}
+.hero>div{min-width:0;display:flex;flex-direction:column;gap:16px}
+.hero img{width:100%;max-width:100%;aspect-ratio:560/662;object-fit:cover;border-radius:22px 22px 120px 22px;display:block}
+.by{font-weight:600}
+@media (max-width:520px){.hero{grid-template-columns:1fr}.hero img{max-width:220px;justify-self:end;margin-top:-8px}}
+
+/* checklist */
+.check{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.items{display:flex;flex-direction:column}
+.items label{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.items label:last-child{border-bottom:0}
+.items input{appearance:none;flex:none;width:24px;height:24px;margin:1px 0 0;border:2px solid var(--muted);border-radius:7px;display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s}
+.items input:checked{background:var(--accent);border-color:var(--accent)}
+.items input:checked::after{content:'';width:6px;height:11px;border:solid var(--accent-ink);border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.items span{min-width:0}
+.score{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:14px;background:var(--bg)}
+.score b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums;color:var(--accent);flex:none;min-width:58px}
+.score p{min-width:0}
+
+/* holes */
+.holes{display:flex;flex-direction:column;gap:40px}
+.hole{display:flex;flex-direction:column;gap:14px;scroll-margin-top:20px}
+.num{font-family:var(--display);font-weight:800;font-size:13px;color:var(--accent-ink);background:var(--accent);border-radius:8px;padding:3px 9px;align-self:flex-start}
+.lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sign{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-weight:500}
+ul.fix{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.fix li{position:relative;padding-left:22px}
+ul.fix li::before{content:'';position:absolute;left:2px;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.task{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.task .lbl{color:var(--accent)}
+
+/* order */
+ol.order{list-style:none;counter-reset:o;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
+ol.order li{counter-increment:o;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+ol.order li::before{content:counter(o);font-family:var(--display);font-weight:800;color:var(--accent-ink);background:var(--accent);border-radius:10px;height:34px;display:grid;place-items:center}
+ol.order li>span{min-width:0}
+
+/* offer */
+.offer{border-radius:26px;padding:26px;background:var(--accent);color:var(--accent-ink);display:flex;flex-direction:column;gap:16px}
+.offer .eyebrow{color:var(--accent-ink);opacity:.7}
+.offer ul.fix li::before{background:var(--accent-ink)}
+.price{font-family:var(--display);font-weight:800;font-size:44px;line-height:1}
+.kw{font-weight:800;background:var(--accent-ink);color:var(--accent);padding:1px 10px;border-radius:8px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{font:600 16px var(--body);border:0;border-radius:12px;padding:12px 18px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.dark{background:var(--accent-ink);color:var(--accent)}
+.btn.ghost{background:transparent;color:var(--accent-ink);border:2px solid var(--accent-ink)}
+.copied{font-size:14px;font-weight:600}
+footer{font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <span class="eyebrow">Гайд · чек-лист</span>
+      <h1>7 дыр, из-за которых гайд <span class="acc">не продаётся</span></h1>
+      <p class="muted">Отметь, что у тебя уже работает, и закрой дыры по порядку. Каждая — с заданием на 15 минут.</p>
+      <p class="by">Наталья <span class="muted">· @naruk_uro</span></p>
+    </div>
+    <img src="photo.jpg" onerror="this.remove()" alt="Наталья за рабочим столом">
+  </header>
+
+  <section class="check" aria-labelledby="ch">
+    <h2 id="ch">Начни с проверки</h2>
+    <p class="muted">Отметь то, что у тебя <b style="color:var(--fg)">уже работает</b>. Честный ответ сэкономит недели.</p>
+    <div class="items" id="items"></div>
+    <div class="score" aria-live="polite"><b id="cnt">0/7</b><p id="verdict"></p></div>
+  </section>
+
+  <section class="holes" id="holes" aria-label="Разбор дыр"></section>
+
+  <section aria-labelledby="ord">
+    <h2 id="ord">С чего начать, если дыр много</h2>
+    <p class="muted" style="margin-top:8px">Иди по порядку — от денег к трафику. Одна дыра в неделю — нормальный темп.</p>
+    <ol class="order">
+      <li><span><b>Оплата и выдача (дыры 2 и 3).</b> Если купить неудобно, остальное не имеет смысла.</span></li>
+      <li><span><b>Страница продукта (дыра 1).</b> Человек должен понять, что покупает.</span></li>
+      <li><span><b>Подарок, контакты и цепочка (дыры 4–6).</b> Это превращает подписчиков в покупателей.</span></li>
+      <li><span><b>Цифры (дыра 7).</b> Когда всё работает — чини самое слабое место.</span></li>
+    </ol>
+  </section>
+
+  <section class="offer" aria-labelledby="of">
+    <span class="eyebrow">Следующий шаг</span>
+    <h2 id="of">Здесь — что чинить. В большом гайде — как.</h2>
+    <p>Пошаговая сборка системы, которая продаёт твой гайд без тебя:</p>
+    <ul class="fix">
+      <li>шаблон страницы продукта — заполняешь своими словами</li>
+      <li>оплата в одну кнопку: как подключить и проверить</li>
+      <li>автоматическая выдача файла после оплаты</li>
+      <li>готовые тексты цепочки из 4 сообщений</li>
+      <li>таблица цифр: где теряются покупатели</li>
+    </ul>
+    <div class="price">640 ₽</div>
+    <p>Напиши мне в Direct слово <span class="kw">СИСТЕМА</span> — пришлю ссылку на оплату.</p>
+    <div class="row">
+      <a class="btn dark" href="https://www.instagram.com/naruk_uro/" target="_blank" rel="noopener">Открыть Instagram</a>
+      <button class="btn ghost" id="copy" type="button">Скопировать @naruk_uro</button>
+      <span class="copied" id="copied" hidden>Скопировано</span>
+    </div>
+  </section>
+
+  <footer>
+    <p>Хочешь, чтобы я собрала всё за тебя под ключ? Напиши в Direct <b style="color:var(--fg)">РАЗБОР</b>.</p>
+    <p>Наталья · Автоворонки и боты · @naruk_uro</p>
+  </footer>
+</div>
+
+<script>
+const HOLES = [{"t": "Ссылка в шапке ведёт в никуда", "sign": "Ссылка открывает PDF, Таплинк с десятью кнопками или «пиши в Direct».", "why": "Человек пришёл на эмоции от поста. Если за 10 секунд он не понял, что внутри и сколько стоит, он закрывает страницу и не возвращается.", "fix": ["Одна страница под один продукт.", "Заголовок — результат, а не название: что изменится у человека.", "Для кого: 3 коротких пункта.", "Что внутри: содержание или 2–3 скриншота страниц.", "Цена и одна кнопка «Купить»."], "task": "Напиши заголовок по формуле: «[Результат] без [главной боли] за [срок]». Например: «Меню на неделю без подсчёта калорий за 20 минут».", "ok": "По ссылке в шапке за 10 секунд понятно, что внутри, для кого и сколько стоит"}, {"t": "«Переведи на карту и пришли скрин»", "sign": "Оплата идёт через перевод, а потом переписка: «оплатила», «проверь», «скинь файл».", "why": "Каждый лишний шаг — это место, где человек передумывает. Вечером он хотел купить, а утром уже нет.", "fix": ["Кнопка оплаты через платёжный сервис или оплата прямо в Telegram-боте.", "Покупатель получает чек автоматически.", "От «хочу» до «оплатил» — не больше трёх нажатий."], "task": "Купи свой гайд сама с телефона и посчитай шаги. Всё, что больше трёх нажатий, — кандидат на удаление.", "ok": "Оплата — одной кнопкой, без «переведи на карту»"}, {"t": "Файл отправляешь руками", "sign": "После оплаты ты сама пишешь человеку и отправляешь файл.", "why": "Купили в два часа ночи — получили утром. За это время приходят сомнения, вопросы «где мой файл?» и просьбы вернуть деньги.", "fix": ["Выдача сразу после оплаты: бот, письмо или страница «Спасибо» со ссылкой.", "В сообщении с файлом — «что сделать первым», чтобы человек сразу начал пользоваться.", "Ссылка на файл ведёт только покупателя, а не открыта всему интернету."], "task": "Представь, что купили в 2:00 ночи. Что человек увидит в 2:01? Если ничего — это первое, что нужно починить.", "ok": "Файл приходит сразу после оплаты, без твоего участия"}, {"t": "Нет бесплатного шага", "sign": "В постах сразу «купи гайд», без подарка и кодового слова.", "why": "С первого касания покупают редко. Человеку нужно сначала попробовать твою пользу бесплатно и убедиться, что ты понимаешь его проблему.", "fix": ["Маленький подарок на 5–15 минут: чек-лист, шаблон, мини-урок.", "Он решает одну узкую задачу и логично ведёт к платному продукту.", "Выдаётся по кодовому слову в комментариях или в Direct."], "task": "Придумай 3 идеи подарка. Подсказка: возьми одну главу своего гайда и сделай из неё чек-лист.", "ok": "Есть бесплатный шаг: подарок по кодовому слову"}, {"t": "Контакты теряются", "sign": "Подарок ушёл в Direct — и всё, человек растворился в переписках.", "why": "Direct — не база клиентов. Через неделю ты не вспомнишь, кто забирал подарок, и не сможешь им ничего предложить.", "fix": ["Подарок выдаёт Telegram-бот или рассылка — так контакт сохраняется.", "В боте видно, откуда пришёл человек и что он уже получил.", "К тем, кто не купил сразу, можно вернуться позже."], "task": "Ответь честно: сколько человек забрали подарок за последний месяц? Можешь ли ты написать им всем прямо сейчас?", "ok": "Контакты сохраняются в боте или рассылке, а не теряются в Direct"}, {"t": "После подарка — тишина", "sign": "Человек получил бесплатный материал, и больше ему ничего не приходит.", "why": "Подарок открывает дверь, но не продаёт. Продают следующие несколько сообщений, в которых человек узнаёт тебя и видит результат.", "fix": ["День 0 — подарок и «с чего начать».", "День 1 — твоя история: почему ты этим занимаешься.", "День 2 — кейс или отзыв с конкретным результатом.", "День 3 — предложение: что внутри платного продукта, цена, кнопка."], "task": "Напиши сообщение для дня 1: 5–7 предложений о том, с какой проблемой ты сама когда-то столкнулась.", "ok": "После подарка человеку приходят 2–4 сообщения"}, {"t": "Нет цифр", "sign": "Ты не знаешь, сколько людей нажали на ссылку, забрали подарок и купили.", "why": "Без цифр не видно, где теряются люди. Можно месяц переписывать гайд, хотя проблема была в кнопке оплаты.", "fix": ["Раз в неделю записывай 4 цифры: переходы по ссылке → забрали подарок → открыли страницу продукта → купили.", "Смотри, где самый большой провал между соседними шагами, и чини только его.", "Разные ссылки для разных постов — так видно, какой пост приводит покупателей."], "task": "Заведи таблицу с 4 колонками и заполни её по итогам этой недели, даже если там нули.", "ok": "Ты видишь цифры: переходы → подарки → покупки"}];
+const KEY = 'sevenHoles.checks';
+let saved = [];
+try { saved = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { saved = []; }
+
+const items = document.getElementById('items');
+const holes = document.getElementById('holes');
+HOLES.forEach((h, i) => {
+  const id = 'c' + (i + 1);
+  const lab = document.createElement('label');
+  lab.setAttribute('for', id);
+  lab.innerHTML = `<input type="checkbox" id="${id}"><span>${h.ok}</span>`;
+  items.appendChild(lab);
+  const box = lab.querySelector('input');
+  box.checked = !!saved[i];
+  box.addEventListener('change', update);
+
+  const s = document.createElement('article');
+  s.className = 'hole'; s.id = 'd' + (i + 1);
+  s.innerHTML = `<span class="num">Дыра ${i + 1} из 7</span><h3>${h.t}</h3>
+    <div><div class="lbl">Признак</div><p class="sign">${h.sign}</p></div>
+    <div><div class="lbl">Почему теряешь деньги</div><p>${h.why}</p></div>
+    <div><div class="lbl">Как закрыть</div><ul class="fix">${h.fix.map(x => `<li>${x}</li>`).join('')}</ul></div>
+    <div class="task"><div class="lbl">Задание на 15 минут</div><p>${h.task}</p></div>`;
+  holes.appendChild(s);
+});
+
+function update() {
+  const boxes = [...items.querySelectorAll('input')];
+  const n = boxes.filter(b => b.checked).length;
+  try { localStorage.setItem(KEY, JSON.stringify(boxes.map(b => b.checked))); } catch (e) {}
+  document.getElementById('cnt').textContent = n + '/7';
+  const v = document.getElementById('verdict');
+  const firstOpen = boxes.findIndex(b => !b.checked);
+  if (n >= 6) v.textContent = 'Система есть. Теперь главное — больше людей в начало воронки: Reels и кодовые слова.';
+  else if (n >= 3) v.textContent = 'Ты теряешь заметную часть покупателей. Закрой дыры по порядку — начни с дыры ' + (firstOpen + 1) + '.';
+  else v.textContent = 'Продажи, если они есть, идут вопреки. Начни с дыр 2 и 3 — оплаты и выдачи.';
+  document.getElementById('cnt').style.color = n >= 6 ? 'var(--accent)' : n >= 3 ? 'var(--warn)' : 'var(--bad)';
+}
+update();
+
+document.getElementById('copy').addEventListener('click', async () => {
+  const done = () => { const c = document.getElementById('copied'); c.hidden = false; setTimeout(() => c.hidden = true, 1800); };
+  try { await navigator.clipboard.writeText('@naruk_uro'); done(); }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents(document.querySelector('footer p:last-child'));
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  }
+});
+</script>
+
+</body>
+</html>
