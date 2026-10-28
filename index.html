@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Наталья · Сайты</title>
+<title>ВсемДизайн</title>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=Caveat:wght@600;700&display=swap">
@@ -25,7 +25,8 @@
   --sun:#F5D166; --sun-soft:#3E3622; --mint:#5FD0AA; --mint-soft:#1D3C36; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden}
+html{overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:clip}
 .pad{padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
 .in{max-width:1120px;margin:0 auto}
 h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.03em}
@@ -274,7 +275,7 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
 /* FINAL */
 .final{padding-block:40px 72px}
 .final-box{background:var(--coral);color:#fff;border-radius:36px;padding:clamp(28px,6vw,64px);display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;position:relative;overflow:hidden}
-.final-box::before{content:"САЙТ";position:absolute;right:-18px;bottom:-48px;font-weight:900;font-size:clamp(7rem,18vw,14rem);line-height:1;color:rgba(255,255,255,.14);pointer-events:none}
+.final-box::before{content:"ДИЗАЙН";position:absolute;right:-18px;bottom:-48px;font-weight:900;font-size:clamp(7rem,18vw,14rem);line-height:1;color:rgba(255,255,255,.14);pointer-events:none}
 .final-box h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1}
 .final-box p{margin-top:16px;font-weight:500;font-size:1.05rem;max-width:46ch}
 .final-side{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
@@ -282,8 +283,46 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
 .handle code{font-family:var(--sans);font-weight:900;font-size:1.1rem;user-select:all;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .btn-white{background:#fff;color:#2A1A3A;box-shadow:none;padding:10px 16px}
 .btn-line{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.8);justify-content:center}
+.dm{background:#fff;color:#1F1C3A;border-radius:26px;padding:24px 26px;display:flex;flex-direction:column;align-items:flex-start;gap:4px;transform:rotate(-2deg);box-shadow:8px 8px 0 #1F1C3A}
+.dm-ic{font-size:2.6rem;line-height:1}
+.dm-t{font-weight:900;font-size:clamp(1.6rem,3.4vw,2.2rem);line-height:1.05}
+.dm-w{font-family:var(--hand);font-weight:700;font-size:1.7rem;color:#E2553B}
 .word{font-family:var(--hand);font-size:1.6rem;line-height:1.1}
 .foot{text-align:center;color:var(--muted);font-size:.85rem;font-weight:600;padding-block:0 36px}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:40px}
+.svc{border-radius:28px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;box-shadow:8px 8px 0 #1F1C3A;color:#1F1C3A}
+.svc.s1{background:#F2735A;color:#fff;transform:rotate(-1deg)}
+.svc.s2{background:#5F6FD9;color:#fff;transform:rotate(1deg)}
+.svc.s3{background:#F2C94C;transform:rotate(-.6deg)}
+.svc-ic{font-size:2.6rem;line-height:1}
+.svc h3{font-size:clamp(1.9rem,3.4vw,2.5rem);font-weight:900;line-height:1;align-self:flex-start;background:#1F1C3A;color:#fff;padding:.12em .28em .16em;border-radius:12px;transform:rotate(-2deg)}
+.svc-tag{font-family:var(--hand);font-weight:700;font-size:1.5rem;line-height:1.1}
+.svc.s1 .svc-tag,.svc.s2 .svc-tag{color:#FFE27A}
+.svc.s3 .svc-tag{color:#B8432E}
+.svc ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;flex:1}
+.svc li{padding-left:26px;position:relative;font-weight:600;font-size:.97rem}
+.svc li::before{content:"";position:absolute;left:0;top:.42em;width:13px;height:13px;border-radius:4px;background:#fff;transform:rotate(45deg)}
+.svc.s3 li::before{background:#1F1C3A}
+.svc-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:14px;border-top:2px dashed rgba(31,28,58,.3)}
+.svc.s1 .svc-foot,.svc.s2 .svc-foot{border-top-color:rgba(255,255,255,.4)}
+.svc-foot b{font-weight:900;font-size:1.15rem}
+.svc .btn-ink{background:#1F1C3A;color:#F6F1E7;box-shadow:4px 4px 0 #fff;padding:12px 18px}
+.combo{margin-top:30px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;background:var(--card);border:2px solid var(--ink);border-radius:24px;padding:20px 24px;box-shadow:6px 6px 0 var(--mint)}
+.combo .ic{font-size:2.4rem;line-height:1}
+.combo b{display:block;font-weight:900;font-size:1.15rem}
+.combo p{color:var(--muted);font-weight:500}
+/* hero phone */
+.phone{position:absolute;left:50%;top:50%;width:54%;aspect-ratio:9/18.5;transform:translate(-50%,-48%) rotate(-4deg);background:#1F1C3A;border-radius:34px;padding:8px;z-index:1;box-shadow:0 30px 50px -18px rgba(20,15,60,.6)}
+.screen{position:relative;width:100%;height:100%;border-radius:27px;overflow:hidden;background:#fff}
+.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;opacity:0;animation:show 16s infinite,scroll 16s infinite}
+.screen img:nth-of-type(2){animation-delay:4s}.screen img:nth-of-type(3){animation-delay:8s}.screen img:nth-of-type(4){animation-delay:12s}
+.notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:34%;height:16px;border-radius:10px;background:#1F1C3A;z-index:2}
+@keyframes show{0%{opacity:0}3%{opacity:1}25%{opacity:1}28%{opacity:0}100%{opacity:0}}
+@keyframes scroll{0%,6%{object-position:50% 0}25%,100%{object-position:50% 100%}}
+@media (max-width:960px){.svc-grid{grid-template-columns:1fr}.svc{transform:none!important}.combo{grid-template-columns:auto 1fr}.combo .btn{grid-column:1/-1;justify-content:center}}
+@media (prefers-reduced-motion: reduce){.screen img:first-of-type{opacity:1}}
 
 @media (max-width:960px){
   .nav-links{display:none}
@@ -321,33 +360,33 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
 </head><body>
 <header class="pad">
   <nav class="nav in">
-    <a class="logo" href="#top"><i></i><span>Наталья</span></a>
-    <div class="nav-links"><a href="#why">Зачем сайт</a><a href="#works">Работы</a><a href="#price">Цены</a><a href="#guide">Гайд</a><a href="#faq">Вопросы</a></div>
-    <a class="btn btn-ink" href="#contact">Заказать сайт ✨</a>
+    <a class="logo" href="#top"><i></i><span>ВсемДизайн</span></a>
+    <div class="nav-links"><a href="#services">Услуги</a><a href="#why">Зачем сайт</a><a href="#works">Работы</a><a href="#price">Цены</a><a href="#guide">Гайд</a><a href="#faq">Вопросы</a></div>
+    <a class="btn btn-ink" href="#contact">Заказать дизайн ✨</a>
   </nav>
 </header>
 
 <section class="hero pad" id="top">
   <div class="in">
     <div class="hero-text">
-      <span class="eyebrow">✨ Сайты для мастеров, экспертов и малого бизнеса</span>
-      <h1>Сайт, который <span class="c">продаёт,</span> пока вы <span class="box">спите</span></h1>
-      <p class="hero-sub">Делаю странные, смелые и красивые сайты <b>быстро и недорого</b>. Ваши клиенты сразу видят цены, работы и кнопку записи, а не теряются в переписке.</p>
+      <span class="eyebrow">✨ Сайты · презентации · карусели</span>
+      <h1>Дизайн, который <span class="c">продаёт,</span> пока вы <span class="box">спите</span></h1>
+      <p class="hero-sub">Студия ВсемДизайн делает смелые и красивые <b>сайты, презентации и карусели</b> быстро и недорого. Для мастеров, экспертов и малого бизнеса.</p>
       <div class="hero-row">
-        <a class="btn btn-coral" href="#contact">Хочу сайт 🔥</a>
-        <div class="price-sticker"><small>🔥 Цена со скидкой</small><s>8 000 ₽</s><span>от 5 000 ₽</span></div>
+        <a class="btn btn-coral" href="#services">Смотреть услуги 🔥</a>
+        <div class="price-sticker"><small>🔥 Сайт со скидкой</small><s>8 000 ₽</s><span>от 5 000 ₽</span></div>
       </div>
-      <span class="note-hand">↳ готово за 3–7 дней ⏱️ без предоплаты всей суммы</span>
+      <span class="note-hand">↳ всё под ключ ⏱️ без предоплаты всей суммы</span>
     </div>
     <div class="stage" aria-hidden="true">
       <div class="arch"></div>
       <div class="strip torn"></div>
       <div class="fan"></div>
       <div class="ring"></div>
-      <img src="natalya-cut.webp" alt="" width="900" height="1125">
+      <div class="phone"><div class="screen"><span class="notch"></span><img src="site-nails.webp" alt=""><img src="site-salon.webp" alt=""><img src="site-tutor.webp" alt=""><img src="site-coffee.webp" alt=""></div></div>
       <span class="bubble b3"><b>★</b>Дизайн, который запоминают</span>
-      <span class="bubble b1"><b>✓</b>+ заявки с сайта</span>
-      <span class="bubble b2"><b>₽</b>от 5 000</span>
+      <span class="bubble b1"><b>✓</b>+ заявки и продажи</span>
+      <span class="bubble b2"><b>3</b>сайты · презентации · карусели</span>
     </div>
   </div>
 </section>
@@ -358,6 +397,38 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
     <span>💅 Маникюр</span><span>👁️ Брови</span><span>📚 Репетиторы</span><span>🧠 Психологи</span><span>☕ Кофейни</span><span>🏠 Риелторы</span><span>📸 Фотографы</span><span>💈 Барбершопы</span><span>💐 Флористы</span><span>💪 Тренеры</span>
   </div>
 </div>
+
+<section class="section pad" id="services">
+  <div class="in">
+    <span class="eyebrow">🧭 Направления и услуги</span>
+    <h2 class="h2" style="margin-top:14px">Всё, чтобы вас <span style="color:var(--coral)">заметили и выбрали</span></h2>
+    <p class="lead" style="margin-top:14px">Три направления в одном стиле: сайт приводит клиентов, презентация помогает продать, карусели делают Instagram живым.</p>
+    <div class="svc-grid">
+      <article class="svc s1">
+        <span class="svc-ic">💻</span>
+        <h3>Сайты</h3>
+        <span class="svc-tag">продают 24/7</span>
+        <ul><li>Сайт-визитка</li><li>Продающий лендинг</li><li>Мини-сайт на 3–5 страниц</li><li>Домен и хостинг под ключ</li><li>Поддержка и правки</li></ul>
+        <div class="svc-foot"><b>от 5 000 ₽</b><a class="btn btn-ink" href="#price">Цены на сайты</a></div>
+      </article>
+      <article class="svc s2">
+        <span class="svc-ic">📊</span>
+        <h3>Презентации</h3>
+        <span class="svc-tag">помогают продать</span>
+        <ul><li>Презентация для клиентов</li><li>Коммерческое предложение</li><li>Для инвесторов и партнёров</li><li>Для выступлений и вебинаров</li><li>Шаблон в вашем фирменном стиле</li></ul>
+        <div class="svc-foot"><b>цена по запросу</b><a class="btn btn-ink" href="#contact">Обсудить</a></div>
+      </article>
+      <article class="svc s3">
+        <span class="svc-ic">📱</span>
+        <h3>Карусели</h3>
+        <span class="svc-tag">их дочитывают и сохраняют</span>
+        <ul><li>Оформление каруселей для Instagram</li><li>Посты и обложки в едином стиле</li><li>Оформление профиля и актуальных</li><li>Шаблоны, чтобы делать посты самим</li><li>Визуал для запуска продукта</li></ul>
+        <div class="svc-foot"><b>цена по запросу</b><a class="btn btn-ink" href="#contact">Обсудить</a></div>
+      </article>
+    </div>
+    <div class="combo"><span class="ic">🎁</span><div><b>Всё вместе — выгоднее</b><p>Сайт, презентация и карусели в одном стиле: вас узнают везде, где бы ни увидели.</p></div><a class="btn btn-coral" href="#contact">Хочу комплект 🔥</a></div>
+  </div>
+</section>
 
 <section class="section pad">
   <div class="in">
@@ -413,7 +484,7 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
 
 <section class="section pad" id="price" style="padding-top:24px">
   <div class="in">
-    <span class="eyebrow">💸 Цены без сюрпризов</span>
+    <span class="eyebrow">💸 Цены на сайты</span>
     <h2 class="h2" style="margin-top:14px">Хороший сайт не должен стоить как машина</h2>
     <span class="note-hand" style="margin-top:10px">↳ цены открытия для первых клиентов 🎉</span>
     <div class="price-grid">
@@ -431,7 +502,7 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
         <span class="old">15 000 ₽ <i>−33%</i></span>
         <div class="sum">10 000 ₽ <small>и выше</small></div>
         <span class="when">5–7 дней</span>
-        <ul><li>Продающая страница с историей 💰</li><li>Тексты пишу сама ✍️</li><li>Отзывы, работы, ответы на вопросы ⭐</li><li>Форма заявки и 2 круга правок ✅</li></ul>
+        <ul><li>Продающая страница с историей 💰</li><li>Тексты пишем сами ✍️</li><li>Отзывы, работы, ответы на вопросы ⭐</li><li>Форма заявки и 2 круга правок ✅</li></ul>
         <a class="btn btn-ink" href="#contact">Хочу лендинг 🔥</a>
       </div>
       <div class="plan">
@@ -444,20 +515,20 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
       </div>
     </div>
     <div class="extras"><span>🛠️ Поддержка от 1 000 ₽/мес</span><span>⚡ Срочно за 48 часов</span></div>
-    <div class="hosting"><span class="ic">🌐</span><div><b>Домен и хостинг под ключ 🔑</b><p>✅ Подключу сайт к вашему домену и хостингу — это уже входит в цену.</p><p>💳 Нет своего домена? Возьму всё на себя за доплату: она идёт в счёт оплаты домена и хостинга. Вам ничего не нужно настраивать.</p></div></div>
+    <div class="hosting"><span class="ic">🌐</span><div><b>Домен и хостинг под ключ 🔑</b><p>✅ Подключим сайт к вашему домену и хостингу — это уже входит в цену.</p><p>💳 Нет своего домена? Возьмём всё на себя за доплату: она идёт в счёт оплаты домена и хостинга. Вам ничего не нужно настраивать.</p></div></div>
   </div>
 </section>
 
 <section class="section pad" style="padding-top:24px">
   <div class="in">
     <span class="eyebrow">🛠️ Как работаем</span>
-    <h2 class="h2" style="margin-top:14px">От «хочу сайт» до первых заявок за неделю</h2>
+    <h2 class="h2" style="margin-top:14px">От «хочу» до готового результата</h2>
     <div class="steps">
-      <div class="step"><span class="n">1</span><b>💬 Пишете «САЙТ»</b><span>В Direct. Отвечу в течение дня.</span></div>
+      <div class="step"><span class="n">1</span><b>💬 Пишете «ДИЗАЙН»</b><span>В Direct. Ответим в течение дня.</span></div>
       <div class="step"><span class="n">2</span><b>📝 5 вопросов</b><span>Чем занимаетесь, для кого, какой стиль нравится.</span><span class="hand">15 минут</span></div>
-      <div class="step"><span class="n">3</span><b>🎨 Первый экран</b><span>Показываю стиль до того, как делать весь сайт.</span></div>
-      <div class="step"><span class="n">4</span><b>🧩 Сайт целиком</b><span>Собираю, вношу правки, проверяю на телефоне.</span></div>
-      <div class="step"><span class="n">5</span><b>🚀 Запуск</b><span>Сайт в интернете, ссылка в шапке профиля.</span><span class="hand">готово! 🎉</span></div>
+      <div class="step"><span class="n">3</span><b>🎨 Первый вариант</b><span>Показываем стиль до того, как делать всё целиком.</span></div>
+      <div class="step"><span class="n">4</span><b>🧩 Весь проект</b><span>Собираем, вносим правки, проверяем на телефоне.</span></div>
+      <div class="step"><span class="n">5</span><b>🚀 Готово</b><span>Сайт запущен, презентация и карусели — в готовых файлах.</span><span class="hand">готово! 🎉</span></div>
     </div>
   </div>
 </section>
@@ -472,7 +543,7 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
       <aside class="score" aria-live="polite">
         <div class="gauge"><svg viewBox="0 0 120 120"><circle class="t" cx="60" cy="60" r="50"/><circle class="v" id="arc" cx="60" cy="60" r="50" stroke-dasharray="314.16" stroke-dashoffset="314.16"/></svg><div><span class="grade" id="grade">—</span><small id="num">0 из 12</small></div></div>
         <div><h3 id="vt">Ваша оценка</h3><p class="sp" id="vd">Переключайте пункты, и оценка обновится.</p></div>
-        <a class="btn btn-coral" href="#contact">Исправить с Натальей ✨</a>
+        <a class="btn btn-coral" href="#contact">Обсудить мой сайт ✨</a>
       </aside>
     </div>
 
@@ -498,9 +569,10 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
       <details><summary>📱 У меня есть Instagram, зачем ещё сайт?</summary><p>Instagram хорош, чтобы вас заметили. Но решение о записи человек принимает там, где всё понятно: цены, работы, адрес, кнопка. И сайт не исчезнет, если с аккаунтом что-то случится.</p></details>
       <details><summary>🔗 Мне хватает Taplink</summary><p>Taplink — это список ссылок. Он не продаёт, не находится в поиске и выглядит так же, как у всех. Сайт показывает ваш характер и отвечает на вопросы клиента сам.</p></details>
       <details><summary>💸 Это ведь дорого?</summary><p>Визитка стоит от 5 000 ₽. Это часто меньше, чем одна-две записи клиентов. Сайт окупается быстро и работает годами без зарплаты и выходных.</p></details>
-      <details><summary>🤷‍♀️ Я ничего не понимаю в сайтах</summary><p>И не нужно. Вы отвечаете на 5 простых вопросов, присылаете фото, а всё остальное делаю я: тексты, дизайн, запуск. Объясняю всё простыми словами.</p></details>
-      <details><summary>😬 А если мне не понравится?</summary><p>Сначала я показываю первый экран и стиль, и только потом делаю весь сайт. Плюс в каждом пакете есть правки. Вы видите результат на каждом шаге.</p></details>
-      <details><summary>⚡ Как быстро будет готово?</summary><p>Визитка — 3–5 дней, лендинг — 5–7 дней. Если очень срочно, могу сделать за 48 часов.</p></details>
+      <details><summary>🤷‍♀️ Я ничего не понимаю в сайтах</summary><p>И не нужно. Вы отвечаете на 5 простых вопросов, присылаете фото, а всё остальное делаем мы: тексты, дизайн, запуск. Объясняю всё простыми словами.</p></details>
+      <details><summary>😬 А если мне не понравится?</summary><p>Сначала мы показываем первый вариант и стиль, и только потом делаю весь сайт. Плюс в каждом пакете есть правки. Вы видите результат на каждом шаге.</p></details>
+      <details><summary>⚡ Как быстро будет готово?</summary><p>Визитка — 3–5 дней, лендинг — 5–7 дней. Если очень срочно, можем сделать за 48 часов.</p></details>
+      <details><summary>🎨 Вы делаете только сайты?</summary><p>Нет. Ещё мы делаем презентации для продаж, инвесторов и выступлений, а также оформляем карусели и профиль в Instagram в едином стиле. Можно заказать всё вместе, чтобы сайт, презентация и соцсети выглядели одинаково.</p></details>
     </div>
   </div>
 </section>
@@ -510,17 +582,16 @@ details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
     <div class="final-box">
       <div>
         <span class="word">Ну что, делаем? 🚀</span>
-        <h2>Ваш сайт может работать уже на следующей неделе 🔥</h2>
-        <p>Напишите мне в Direct слово «САЙТ». Расскажу, какой вариант подойдёт именно вам, и назову точную цену. Это ни к чему не обязывает.</p>
+        <h2>Ваш новый дизайн может быть готов уже на следующей неделе 🔥</h2>
+        <p>Напишите нам в Direct слово «ДИЗАЙН». Расскажем, что подойдёт именно вам: сайт, презентация или карусели, и назовём точную цену. Это ни к чему не обязывает.</p>
       </div>
       <div class="final-side">
-        <div class="handle"><code id="h">@naruk_uro</code><button class="btn btn-white" id="copy" type="button">Скопировать</button></div>
-        <a class="btn btn-line" href="https://instagram.com/naruk_uro" target="_blank" rel="noopener">💌 Написать в Instagram</a>
+        <div class="dm"><span class="dm-ic">💌</span><span class="dm-t">Пишите в Direct</span><span class="dm-w">слово «ДИЗАЙН»</span></div>
       </div>
     </div>
   </div>
 </section>
-<p class="foot pad">Наталья · сайты быстро, красиво и недорого 💜🧡💛💚</p>
+<p class="foot pad">ВсемДизайн · сайты, презентации и карусели 💜🧡💛💚</p>
 
 <script>
 const items=[
@@ -555,6 +626,5 @@ function update(){
   else{t.textContent='Сайт почти не продаёт';d.textContent='Похоже, пора делать новый.'}
 }
 load();update();boxes.forEach(b=>b.addEventListener('change',()=>{update();save()}));
-document.getElementById('copy').addEventListener('click',async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText('@naruk_uro');b.textContent='Готово'}catch(err){const r=document.createRange();r.selectNodeContents(document.getElementById('h'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Выделено'}setTimeout(()=>b.textContent='Скопировать',1800)});
 </script>
 </body></html>
