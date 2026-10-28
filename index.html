@@ -1,336 +1,560 @@
 <!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Чек-лист: 7 дыр, из-за которых гайд не продаётся, и как их закрыть.">
-<title>Гайд «7 дыр»</title>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Наталья · Сайты</title>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Golos+Text:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=Caveat:wght@600;700&display=swap">
 <style>
+/* Layout: a paper collage you scroll through — torn strips, stickers and handwritten notes frame big Montserrat statements; sections alternate cream paper and saturated color slabs */
 :root{
-  --bg:#0E0F13; --surface:#16181E; --line:#262932; --fg:#F2F2F0; --muted:#A9ABB3;
-  --accent:#7CF29C; --accent-ink:#0E0F13; --warn:#FFD66B; --bad:#FF9C8C;
-  --display:'Unbounded','Golos Text',system-ui,sans-serif;
-  --body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
-  color-scheme:dark;
+  --paper:#F6F1E7; --card:#FFFDF8; --ink:#1F1C3A; --muted:#6B6578; --line:#E3D9C6;
+  --peri:#5F6FD9; --peri-soft:#E2E4F8; --coral:#F2735A; --coral-soft:#FBE0D8;
+  --sun:#F2C94C; --sun-soft:#FBF0CC; --mint:#3FAE8C; --mint-soft:#D9F0E6;
+  --onc:#1F1C3A; --white:#FFFFFF;
+  --sans:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hand:"Caveat", "Segoe Print", "Comic Sans MS", cursive;
+  color-scheme:light;
 }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#17152B; --card:#221F3C; --ink:#F3EEE4; --muted:#ADA6BE; --line:#363152;
+  --peri:#8E9BFF; --peri-soft:#2B2E5C; --coral:#FF8A72; --coral-soft:#43273A;
+  --sun:#F5D166; --sun-soft:#3E3622; --mint:#5FD0AA; --mint-soft:#1D3C36; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#17152B; --card:#221F3C; --ink:#F3EEE4; --muted:#ADA6BE; --line:#363152;
+  --peri:#8E9BFF; --peri-soft:#2B2E5C; --coral:#FF8A72; --coral-soft:#43273A;
+  --sun:#F5D166; --sun-soft:#3E3622; --mint:#5FD0AA; --mint-soft:#1D3C36; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;
-  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:40px 40px}
-.wrap{max-width:680px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:56px}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
-h1{font-size:clamp(30px,8vw,46px);line-height:1.08;font-weight:800}
-h2{font-size:clamp(22px,5.4vw,30px);line-height:1.15;font-weight:800}
-h3{font-size:19px;line-height:1.25;font-weight:600}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden}
+.pad{padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.in{max-width:1120px;margin:0 auto}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.03em}
 p{margin:0}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
-.muted{color:var(--muted)}
-.acc{color:var(--accent)}
-a{color:var(--accent)}
-b.fg{color:var(--fg)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:5}
+img{display:block;max-width:100%}
+a{color:inherit}
+.hand{font-family:var(--hand);font-weight:700;letter-spacing:0}
+.torn{clip-path:polygon(0 14%,5% 0,11% 12%,18% 2%,25% 15%,33% 3%,41% 13%,49% 1%,57% 14%,65% 2%,73% 13%,81% 3%,89% 15%,95% 4%,100% 12%,100% 88%,94% 100%,87% 86%,79% 98%,71% 85%,63% 97%,55% 86%,47% 99%,39% 85%,31% 97%,23% 86%,15% 98%,7% 85%,0 96%)}
+.btn{font:inherit;font-weight:800;border:0;border-radius:999px;padding:16px 26px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .15s, box-shadow .15s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.btn:focus-visible{outline:3px solid var(--peri);outline-offset:3px}
+.btn-ink{background:var(--ink);color:var(--paper);box-shadow:5px 5px 0 var(--coral)}
+.btn-coral{background:var(--coral);color:#fff;box-shadow:5px 5px 0 var(--ink)}
+.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--peri);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:3px;background:var(--coral);border-radius:3px}
+.h2{font-size:clamp(2rem,5.6vw,3.6rem);font-weight:900;line-height:1.02}
+.lead{color:var(--muted);font-size:1.08rem;font-weight:500;max-width:56ch}
+.section{padding-block:72px}
 
-.hero{display:grid;grid-template-columns:1fr 200px;gap:20px;align-items:end}
-.hero>div{min-width:0;display:flex;flex-direction:column;gap:16px}
-.hero img{width:100%;max-width:100%;aspect-ratio:560/662;object-fit:cover;border-radius:22px 22px 120px 22px;display:block}
-.by{font-weight:600}
-@media (max-width:520px){.hero{grid-template-columns:1fr}.hero img{max-width:220px;justify-self:end;margin-top:-8px}}
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.logo{font-weight:900;font-size:1.15rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{width:14px;height:14px;border-radius:50%;background:var(--coral);box-shadow:10px 0 0 var(--sun)}
+.logo span{margin-left:10px}
+.nav-links{display:flex;gap:22px;font-size:.88rem;font-weight:700}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--coral)}
+.nav .btn{padding:10px 18px;font-size:.88rem;box-shadow:3px 3px 0 var(--coral)}
 
-.story{display:flex;flex-direction:column;gap:14px}
-.tl{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:6px}
-.tl li{position:relative;padding:0 0 14px 20px}
-.tl li::before{content:'';position:absolute;left:-7px;top:.45em;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
-.tl li.lost::before{border-color:var(--bad);background:var(--bad)}
-.tl time{font-family:var(--display);font-weight:600;font-size:14px;color:var(--accent);margin-right:8px;font-variant-numeric:tabular-nums}
-.tl li.lost time{color:var(--bad)}
-.punch{font-size:19px;font-weight:600}
+/* HERO */
+.hero{position:relative;padding-block:20px 40px}
+.hero .in{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+.hero-text{display:flex;flex-direction:column;gap:22px;min-width:0;position:relative;z-index:2}
+.hero h1{font-size:clamp(2.6rem,7.6vw,5.4rem);font-weight:900;line-height:.98}
+.hero h1 .c{color:var(--coral)}
+.hero h1 .box{background:var(--peri);color:#fff;padding:0 .14em;border-radius:.14em;display:inline-block;transform:rotate(-2deg)}
+.hero h1 .sl{font-style:italic}
+.hero-sub{font-size:1.12rem;font-weight:500;color:var(--muted);max-width:44ch}
+.hero-sub b{color:var(--ink)}
+.hero-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.price-sticker{background:var(--sun);color:var(--onc);border-radius:18px;padding:10px 16px;transform:rotate(3deg);font-weight:900;line-height:1.1;box-shadow:4px 4px 0 var(--ink)}
+.price-sticker small{display:block;font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.price-sticker span{font-size:1.5rem}
+.note-hand{font-family:var(--hand);font-size:1.5rem;color:var(--peri);display:flex;align-items:center;gap:8px;transform:rotate(-3deg)}
+.stage{position:relative;aspect-ratio:4/5;width:100%;max-width:520px;justify-self:center}
+.arch{position:absolute;left:14%;right:6%;top:6%;bottom:0;background:var(--peri);border-radius:999px 999px 0 0}
+.strip{position:absolute;left:-12%;right:-8%;top:36%;height:15%;background:var(--coral);transform:rotate(-14deg)}
+.fan{position:absolute;right:-2%;top:10%;width:26%;aspect-ratio:1;background:repeating-conic-gradient(from 200deg at 0% 100%, var(--sun) 0 9deg, #E5B93A 9deg 18deg);clip-path:polygon(0 100%,0 0,100% 0,100% 100%);border-radius:0 100% 0 0}
+.ring{position:absolute;left:4%;bottom:14%;width:22%;aspect-ratio:1;border-radius:50%;border:clamp(10px,2.2vw,18px) solid color-mix(in srgb,var(--mint) 70%,transparent);box-shadow:inset 0 0 12px rgba(255,255,255,.5),0 6px 18px rgba(63,174,140,.35)}
+.stage img{position:absolute;inset:auto 0 0 0;width:100%;height:auto;z-index:1}
+.bubble{position:absolute;z-index:2;background:var(--card);border-radius:16px;padding:10px 14px;font-size:.84rem;font-weight:800;box-shadow:0 14px 30px -12px rgba(30,20,80,.45);display:flex;align-items:center;gap:8px;animation:bob 5s ease-in-out infinite}
+.bubble b{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.8rem}
+.b1{left:-4%;top:58%}.b1 b{background:var(--mint)}
+.b2{right:-2%;top:42%;animation-delay:1.6s}.b2 b{background:var(--coral)}
+.b3{left:20%;top:4%;animation-delay:.8s}.b3 b{background:var(--peri)}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(1deg)}}
 
-.check{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:14px}
-.items{display:flex;flex-direction:column}
-.items label{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
-.items label:last-child{border-bottom:0}
-.items input{appearance:none;flex:none;width:24px;height:24px;margin:1px 0 0;border:2px solid var(--muted);border-radius:7px;display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s}
-.items input:checked{background:var(--accent);border-color:var(--accent)}
-.items input:checked::after{content:'';width:6px;height:11px;border:solid var(--accent-ink);border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.items span{min-width:0}
-.score{display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:14px;background:var(--bg)}
-.score .top{display:flex;gap:14px;align-items:center}
-.score b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums;color:var(--accent);flex:none;min-width:58px}
-.score p{min-width:0}
+/* MARQUEE */
+.marquee{background:var(--ink);color:var(--paper);overflow:hidden;transform:rotate(-1.5deg);margin-block:20px 10px;padding-block:14px}
+.track{display:flex;gap:40px;width:max-content;animation:run 30s linear infinite;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.02em;padding-left:40px}
+.track span{display:flex;align-items:center;gap:40px;white-space:nowrap}
+.track span::after{content:"✦";color:var(--sun)}
+@keyframes run{to{transform:translateX(-50%)}}
 
-.holes{display:flex;flex-direction:column;gap:40px}
-.hole{display:flex;flex-direction:column;gap:14px;scroll-margin-top:24px;border-radius:20px;transition:box-shadow .3s,padding .3s}
-.hole.mine{box-shadow:0 0 0 2px var(--warn);padding:18px}
-.tagmine{display:none;font-size:13px;font-weight:700;color:var(--accent-ink);background:var(--warn);border-radius:8px;padding:3px 9px;align-self:flex-start}
-.hole.mine .tagmine{display:inline-block}
-.heads{display:flex;flex-wrap:wrap;gap:8px}
-.num{font-family:var(--display);font-weight:800;font-size:13px;color:var(--accent-ink);background:var(--accent);border-radius:8px;padding:3px 9px;align-self:flex-start}
-.lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.sign{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-weight:500}
-ul.fix{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-ul.fix li{position:relative;padding-left:22px}
-ul.fix li::before{content:'';position:absolute;left:2px;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--accent)}
-.task{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
-.task .lbl{color:var(--accent)}
-.lock{display:flex;gap:12px;align-items:flex-start;border:1px dashed #3A3E49;border-radius:16px;padding:14px 16px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(124,242,156,.035) 10px 20px)}
-.lock .ic{flex:none;font-size:18px;line-height:1.3}
-.lock p{min-width:0;font-size:15px}
-.lock a{font-weight:600;white-space:nowrap}
-.hook{font-style:italic;color:var(--muted);padding-top:6px;border-top:1px solid var(--line)}
-.hook::after{content:' ↓';font-style:normal;color:var(--accent)}
+/* PAIN */
+.pain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:36px}
+.pain{background:var(--card);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:12px;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.pain:nth-child(2){transform:rotate(1.2deg);box-shadow:6px 6px 0 var(--peri)}
+.pain:nth-child(3){transform:rotate(-1deg);box-shadow:6px 6px 0 var(--coral)}
+.pain:nth-child(4){transform:rotate(-.8deg);box-shadow:6px 6px 0 var(--sun)}
+.pain:nth-child(5){transform:rotate(.8deg);box-shadow:6px 6px 0 var(--mint)}
+.pain q{font-family:var(--hand);font-size:1.7rem;line-height:1.1;quotes:"«" "»";color:var(--ink)}
+.pain p{color:var(--muted);font-weight:500;font-size:.95rem}
+.pain-cta{background:var(--coral);color:#fff;border-color:var(--coral);justify-content:center}
+.pain-cta p{color:#fff;font-weight:700;font-size:1.15rem;line-height:1.35}
+.pain-cta .hand{font-size:2rem;line-height:1}
 
-.secret{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;display:flex;flex-direction:column;gap:14px}
-.secret[data-open="0"] .body{display:none}
-.secret .body{display:flex;flex-direction:column;gap:14px}
+/* WHY (color slab) */
+.slab{background:var(--peri);color:#fff;position:relative;overflow:hidden}
+.slab .eyebrow{color:#fff}.slab .eyebrow::before{background:var(--sun)}
+.slab .lead{color:rgba(255,255,255,.85)}
+.why-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.why-list{display:flex;flex-direction:column;gap:14px;counter-reset:w}
+.why-item{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.25);border-radius:20px;padding:18px 20px 18px 66px;position:relative}
+.why-item::before{counter-increment:w;content:counter(w);position:absolute;left:18px;top:16px;width:34px;height:34px;border-radius:50%;background:var(--sun);color:var(--onc);display:grid;place-items:center;font-weight:900}
+.why-item b{display:block;font-weight:800;font-size:1.08rem}
+.why-item span{color:rgba(255,255,255,.85);font-weight:500;font-size:.95rem}
+.big-quote{font-size:clamp(1.6rem,3.6vw,2.4rem);font-weight:900;line-height:1.1;margin-top:28px}
+.big-quote em{font-style:normal;background:var(--sun);color:var(--onc);padding:0 .12em;border-radius:.12em}
+.slab .note-hand{color:var(--sun);margin-top:18px}
 
-.offer{border-radius:26px;padding:26px;background:var(--accent);color:var(--accent-ink);display:flex;flex-direction:column;gap:16px}
-.offer .eyebrow{color:var(--accent-ink);opacity:.7}
-.offer ul.fix li::before{background:var(--accent-ink)}
-.price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.price b{font-family:var(--display);font-weight:800;font-size:44px;line-height:1}
-.price span{font-weight:600;max-width:300px;line-height:1.35}
-.kw{font-weight:800;background:var(--accent-ink);color:var(--accent);padding:1px 10px;border-radius:8px}
-.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.btn{font:600 16px var(--body);border:0;border-radius:12px;padding:12px 18px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-.btn.dark{background:var(--accent-ink);color:var(--accent)}
-.btn.ghost{background:transparent;color:var(--accent-ink);border:2px solid var(--accent-ink)}
-.btn.acc{background:var(--accent);color:var(--accent-ink)}
-.btn.line{background:transparent;color:var(--accent);border:2px solid var(--accent)}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.split>div{min-width:0}
-@media (max-width:520px){.split{grid-template-columns:1fr}}
-.copied{font-size:14px;font-weight:600}
-footer{font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+/* WORKS */
+.works-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:36px}
+.work{text-decoration:none;display:flex;flex-direction:column;gap:12px}
+.work:nth-child(odd){transform:translateY(24px)}
+.shot{position:relative;aspect-ratio:9/14;border-radius:22px;overflow:hidden;border:2px solid var(--ink);background:var(--card)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:object-position 5s ease}
+.work:hover .shot img,.work:focus-visible .shot img{object-position:bottom}
+.work:focus-visible{outline:none}.work:focus-visible .shot{outline:3px solid var(--peri);outline-offset:3px}
+.tape{position:absolute;top:-8px;left:50%;width:84px;height:24px;background:color-mix(in srgb,var(--sun) 80%,transparent);transform:translateX(-50%) rotate(-4deg);z-index:2}
+.work b{font-weight:900;font-size:1.05rem;display:block}
+.work span{color:var(--muted);font-weight:500;font-size:.9rem}
+.small{font-size:.85rem;color:var(--muted);font-weight:500;margin-top:40px}
+
+/* PRICE */
+.price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px;align-items:stretch}
+.plan{background:var(--card);border:2px solid var(--ink);border-radius:26px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;position:relative}
+.plan:nth-child(1){--g:var(--peri)}.plan:nth-child(2){--g:var(--sun)}.plan:nth-child(3){--g:var(--mint)}
+.plan-top{display:flex;flex-direction:column;gap:8px;padding-bottom:16px;border-bottom:2px dashed color-mix(in srgb,currentColor 25%,transparent)}
+.plan-kind{align-self:flex-start;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--g);color:var(--onc)}
+.plan h3{font-size:clamp(1.9rem,3.4vw,2.4rem);font-weight:900;line-height:1;letter-spacing:-.03em;align-self:flex-start;background:linear-gradient(transparent 58%, color-mix(in srgb,var(--g) 70%,transparent) 58%, color-mix(in srgb,var(--g) 70%,transparent) 92%, transparent 92%);padding:0 .08em}
+.plan.hot h3{background:linear-gradient(transparent 58%, var(--ink) 58%, var(--ink) 92%, transparent 92%);color:#fff}
+.tagline{font-family:var(--hand);font-weight:700;font-size:1.45rem;line-height:1.1;color:var(--g)}
+.plan.hot .tagline{color:var(--sun)}
+.plan:nth-child(2) .plan-kind{background:var(--ink);color:#fff}
+/* bright plan cards */
+.plan{border:0;box-shadow:8px 8px 0 var(--ink)}
+.plan:nth-child(1){background:var(--peri);color:#fff;transform:rotate(1deg)}
+.plan:nth-child(1) .plan-kind{background:var(--sun);color:var(--onc)}
+.plan:nth-child(1) h3{background:linear-gradient(transparent 58%, var(--sun) 58%, var(--sun) 92%, transparent 92%);color:#fff;text-shadow:2px 2px 0 var(--ink)}
+.plan:nth-child(1) .tagline{color:var(--sun)}
+.plan:nth-child(1) li::before{background:var(--sun)}
+.plan:nth-child(1) .when,.plan:nth-child(1) .sum small{color:rgba(255,255,255,.9)}
+.plan:nth-child(1) .old{color:rgba(255,255,255,.75);text-decoration-color:var(--sun)}
+.plan:nth-child(1) .old i{background:var(--sun);color:var(--onc)}
+.plan:nth-child(3){background:var(--sun);color:var(--onc);transform:rotate(-1deg)}
+.plan:nth-child(3) .plan-kind{background:var(--onc);color:var(--sun)}
+.plan:nth-child(3) h3{background:linear-gradient(transparent 58%, var(--coral) 58%, var(--coral) 92%, transparent 92%);color:var(--onc)}
+.plan:nth-child(3) .tagline{color:#B8432E}
+.plan:nth-child(3) li::before{background:var(--coral)}
+.plan:nth-child(3) .when{color:#3A3570}
+.plan:nth-child(3) .sum small{color:rgba(31,28,58,.7)}
+.plan:nth-child(3) .old{color:rgba(31,28,58,.6);text-decoration-color:var(--coral)}
+.plan:nth-child(3) .btn-ink{background:#1F1C3A;color:#F6F1E7;box-shadow:4px 4px 0 var(--coral)}
+.plan:nth-child(1) .btn-ink{background:#1F1C3A;color:#F6F1E7;box-shadow:4px 4px 0 var(--sun)}
+.plan.hot{box-shadow:8px 8px 0 var(--ink)}
+.plan.hot h3{text-shadow:none}
+.plan.hot .btn-ink{background:#1F1C3A;color:#F6F1E7}
+.plan.hot .plan-kind{background:#1F1C3A;color:#fff}
+.plan.hot h3{background:linear-gradient(transparent 58%, #1F1C3A 58%, #1F1C3A 92%, transparent 92%)}
+.plan .plan-top{border-bottom-color:rgba(255,255,255,.35)}
+.plan:nth-child(3) .plan-top{border-bottom-color:rgba(31,28,58,.25)}
+@media (max-width:960px){.plan:nth-child(1),.plan:nth-child(3){transform:none}}
+/* all plan titles on dark pills */
+.plan h3,.plan:nth-child(1) h3,.plan:nth-child(3) h3{background:#1F1C3A;color:#fff;text-shadow:none;padding:.12em .28em .16em;border-radius:12px;transform:rotate(-2deg)}
+.plan:nth-child(1) h3{box-shadow:4px 4px 0 var(--sun)}
+.plan:nth-child(3) h3{box-shadow:4px 4px 0 var(--coral);transform:rotate(1.5deg)}
+.plan:nth-child(1) .tagline{color:#fff}
+.hosting{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--sun);color:#1F1C3A;border-radius:22px;padding:20px 24px;box-shadow:6px 6px 0 var(--ink);transform:rotate(-.5deg)}
+.hosting .ic{font-size:2.4rem;line-height:1}
+.hosting b{display:block;font-weight:900;font-size:1.15rem;margin-bottom:4px}
+.hosting p{font-weight:600;font-size:.97rem}
+.hosting p + p{margin-top:6px}
+@media (max-width:560px){.hosting{grid-template-columns:1fr}}
+/* hot card readability */
+.plan.hot{background:#E2553B;color:#fff}
+.plan.hot h3{background:#1F1C3A;color:#fff;padding:.12em .28em .16em;border-radius:12px;transform:rotate(-2deg);box-shadow:4px 4px 0 var(--sun)}
+.plan.hot .plan-kind{background:var(--sun);color:#1F1C3A}
+.plan.hot .tagline{color:#FFE27A}
+.plan.hot .when,.plan.hot .sum small{color:#fff}
+.plan.hot .old{color:rgba(255,255,255,.85);text-decoration-color:#FFE27A}
+.plan.hot .old i{background:#1F1C3A;color:#fff}
+.plan.hot .badge{background:#1F1C3A;color:var(--sun)}
+.plan.hot li::before{background:#FFE27A}
+.plan .sum{font-size:2.4rem;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.plan .sum small{font-size:1rem;font-weight:700;color:var(--muted)}
+.old{font-size:1.15rem;font-weight:800;color:var(--muted);text-decoration:line-through;text-decoration-thickness:3px;text-decoration-color:var(--coral);display:flex;align-items:center;gap:8px}
+.old i{font-style:normal;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;background:var(--coral);color:#fff;padding:3px 8px;border-radius:999px;text-decoration:none;display:inline-block}
+.plan.hot .old{color:rgba(255,255,255,.8);text-decoration-color:var(--sun)}
+.plan.hot .old i{background:var(--sun);color:var(--onc)}
+.price-sticker s{display:block;font-size:.85rem;font-weight:800;opacity:.6;text-decoration-thickness:2px}
+.plan .when{font-weight:700;color:var(--peri);font-size:.9rem}
+.plan ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;flex:1}
+.plan li{padding-left:26px;position:relative;font-weight:500;font-size:.95rem}
+.plan li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:14px;border-radius:4px;background:var(--mint);transform:rotate(45deg)}
+.plan .btn{justify-content:center}
+.plan.hot{background:var(--coral);color:#fff;border-color:var(--coral);transform:translateY(-12px) rotate(-1deg);box-shadow:8px 8px 0 var(--ink)}
+.plan.hot .when,.plan.hot .sum small{color:#fff}
+.plan.hot li::before{background:var(--sun)}
+.plan.hot .btn-ink{box-shadow:4px 4px 0 var(--sun)}
+.badge{position:absolute;top:-18px;right:18px;background:var(--sun);color:var(--onc);font-family:var(--hand);font-size:1.4rem;padding:2px 14px;border-radius:12px;transform:rotate(5deg)}
+.extras{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;align-items:center}
+.extras span{background:var(--card);border:1.5px dashed var(--muted);border-radius:999px;padding:8px 14px;font-weight:600;font-size:.9rem}
+.extras b{font-weight:800;margin-right:4px}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:40px;position:relative}
+.step{display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:22px;background:var(--card);border:1.5px solid var(--line)}
+.step .n{font-size:2.6rem;font-weight:900;line-height:1;-webkit-text-stroke:2px var(--ink);color:transparent}
+.step:nth-child(1) .n{color:var(--coral)}.step:nth-child(5) .n{color:var(--mint)}
+.step b{font-weight:800}
+.step span{color:var(--muted);font-size:.9rem;font-weight:500}
+.step .hand{color:var(--peri);font-size:1.25rem;line-height:1}
+
+/* GUIDE */
+.guide{background:var(--ink);color:var(--paper)}
+.guide .eyebrow{color:var(--sun)}
+.guide .lead{color:color-mix(in srgb,var(--paper) 75%,transparent)}
+.guide .h2 em{font-style:normal;color:var(--sun)}
+.guide-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;margin-top:36px;align-items:start}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ck{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);cursor:pointer;transition:background .2s,border-color .2s}
+.ck strong{display:block;font-weight:700;font-size:.95rem;line-height:1.3}
+.ck small{display:block;color:color-mix(in srgb,var(--paper) 65%,transparent);font-size:.82rem;margin-top:2px}
+.ck input{position:absolute;opacity:0;width:1px;height:1px}
+.sw{width:44px;height:26px;border-radius:999px;background:rgba(255,255,255,.2);position:relative;transition:background .2s;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s}
+.ck:has(input:checked){background:color-mix(in srgb,var(--mint) 22%,transparent);border-color:var(--mint)}
+.ck:has(input:checked) .sw{background:var(--mint)}
+.ck:has(input:checked) .sw::after{transform:translateX(18px)}
+.ck:has(input:focus-visible){outline:3px solid var(--sun);outline-offset:2px}
+.score{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 16px);background:var(--paper);color:var(--ink);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center}
+.gauge{width:150px;height:150px;position:relative}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge .t{fill:none;stroke:var(--line);stroke-width:12}
+.gauge .v{fill:none;stroke:var(--coral);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset .5s,stroke .3s}
+.gauge div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.grade{font-size:2.8rem;font-weight:900;line-height:1}
+.gauge small{font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.score h3{font-size:1rem;font-weight:900;letter-spacing:0}
+.score p{font-size:.9rem;color:var(--muted);font-weight:500}
+.score .btn{width:100%;justify-content:center;padding:12px 16px}
+.formula{margin-top:56px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.f{border-radius:20px;padding:20px;color:var(--onc);display:flex;flex-direction:column;gap:6px}
+.f:nth-child(1){background:var(--sun)}.f:nth-child(2){background:var(--coral);color:#fff}.f:nth-child(3){background:var(--peri);color:#fff}.f:nth-child(4){background:var(--mint)}
+.f .hand{font-size:1.5rem;line-height:1}
+.f b{font-weight:900;font-size:1.05rem}
+.f span{font-size:.9rem;font-weight:500;opacity:.88}
+.formula-head{margin-top:56px;display:flex;flex-direction:column;gap:8px}
+.formula-head h3{font-size:clamp(1.4rem,3.4vw,2rem);font-weight:900}
+.example{margin-top:14px;background:rgba(255,255,255,.08);border-radius:18px;padding:18px 20px;font-weight:600}
+.example .hand{color:var(--sun);font-size:1.4rem;display:block}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:12px;margin-top:36px}
+details{background:var(--card);border:2px solid var(--ink);border-radius:20px;padding:0 22px;transition:box-shadow .2s}
+details[open]{box-shadow:6px 6px 0 var(--peri)}
+summary{cursor:pointer;list-style:none;padding:20px 0;font-weight:800;font-size:1.08rem;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.6rem;font-weight:900;color:var(--coral);transition:transform .2s;flex:none}
+details[open] summary::after{transform:rotate(45deg)}
+summary:focus-visible{outline:3px solid var(--peri);outline-offset:4px;border-radius:6px}
+details p{padding-bottom:20px;color:var(--muted);font-weight:500;max-width:70ch}
+
+/* FINAL */
+.final{padding-block:40px 72px}
+.final-box{background:var(--coral);color:#fff;border-radius:36px;padding:clamp(28px,6vw,64px);display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;position:relative;overflow:hidden}
+.final-box::before{content:"САЙТ";position:absolute;right:-18px;bottom:-48px;font-weight:900;font-size:clamp(7rem,18vw,14rem);line-height:1;color:rgba(255,255,255,.14);pointer-events:none}
+.final-box h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1}
+.final-box p{margin-top:16px;font-weight:500;font-size:1.05rem;max-width:46ch}
+.final-side{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+.handle{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(255,255,255,.2);border-radius:18px;padding:10px 10px 10px 18px}
+.handle code{font-family:var(--sans);font-weight:900;font-size:1.1rem;user-select:all;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.btn-white{background:#fff;color:#2A1A3A;box-shadow:none;padding:10px 16px}
+.btn-line{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.8);justify-content:center}
+.word{font-family:var(--hand);font-size:1.6rem;line-height:1.1}
+.foot{text-align:center;color:var(--muted);font-size:.85rem;font-weight:600;padding-block:0 36px}
+
+@media (max-width:960px){
+  .nav-links{display:none}
+  .hero .in{grid-template-columns:1fr}
+  .stage{max-width:420px}
+  .pain-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .why-wrap{grid-template-columns:1fr}
+  .works{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .work:nth-child(odd){transform:none}
+  .price-grid{grid-template-columns:1fr}
+  .plan.hot{transform:none}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .guide-wrap{grid-template-columns:1fr}
+  .score{order:-1;flex-direction:row;text-align:left;padding:12px 16px;top:env(safe-area-inset-top, 0px);z-index:5}
+  .gauge{width:70px;height:70px;flex:none}
+  .grade{font-size:1.5rem}.gauge small{display:none}
+  .score .sp,.score .btn{display:none}
+  .formula{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .final-box{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .section{padding-block:56px}
+  .pain-grid,.checks{grid-template-columns:1fr}
+  .pain{transform:none!important}
+  .steps{grid-template-columns:1fr}
+  .formula{grid-template-columns:1fr}
+  .works{gap:12px}
+  .b1{left:0}.b2{right:0}
+  .bubble{font-size:.74rem;padding:8px 10px}
+  .nav .btn{display:none}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
-</head>
-<body>
-<div id="bar"></div>
 
-<div class="wrap">
-  <header class="hero">
-    <div>
-      <span class="eyebrow">Гайд готов. Продаж — ноль?</span>
-      <h1>7 дыр, из-за которых гайд <span class="acc">не продаётся</span></h1>
-      <p class="muted">Обычно дело не в гайде. Люди хотят купить — и теряются где-то между постом и оплатой. За 7 минут найдём, где именно это происходит у тебя.</p>
-      <p class="by">Наталья <span class="muted">· @naruk_uro</span></p>
-    </div>
-    <img src="photo.jpg" onerror="this.remove()" alt="Наталья за рабочим столом">
-  </header>
+</head><body>
+<header class="pad">
+  <nav class="nav in">
+    <a class="logo" href="#top"><i></i><span>Наталья</span></a>
+    <div class="nav-links"><a href="#why">Зачем сайт</a><a href="#works">Работы</a><a href="#price">Цены</a><a href="#guide">Гайд</a><a href="#faq">Вопросы</a></div>
+    <a class="btn btn-ink" href="#contact">Заказать сайт ✨</a>
+  </nav>
+</header>
 
-  <section class="story" aria-labelledby="st">
-    <h2 id="st">Как выглядит продажа, которую ты не заметила</h2>
-    <ol class="tl">
-      <li><time>22:40</time>Человек смотрит твой Reels и думает: «Мне это надо».</li>
-      <li><time>22:41</time>Жмёт ссылку в шапке. Там Таплинк с девятью кнопками.</li>
-      <li><time>22:43</time>Пишет в Direct: «Сколько стоит?»</li>
-      <li><time>23:10</time>Ответа нет. Он листает дальше — у кого-то другого тоже есть гайд.</li>
-      <li class="lost"><time>09:15</time>Ты отвечаешь. Он уже не помнит, зачем писал.</li>
-    </ol>
-    <p class="punch">Ты даже не узнаешь, что он был. И он был не один.</p>
-    <p class="muted">Ниже — 7 мест, где такие люди пропадают. Сначала проверь себя: это займёт минуту.</p>
-  </section>
-
-  <section class="check" aria-labelledby="ch">
-    <span class="eyebrow">Шаг 1 · проверка за минуту</span>
-    <h2 id="ch">Что у тебя уже работает?</h2>
-    <p class="muted">Отметь только то, что <b class="fg">правда работает</b> сегодня. Честный ответ сэкономит недели.</p>
-    <div class="items" id="items"></div>
-    <div class="score" aria-live="polite">
-      <div class="top"><b id="cnt">0/7</b><p id="verdict"></p></div>
-      <div class="row"><a class="btn acc" id="go" href="#d1">Показать мою главную дыру ↓</a></div>
-    </div>
-  </section>
-
-  <section class="holes" id="holes" aria-label="Разбор дыр"></section>
-
-  <section class="secret" id="secret" data-open="0" aria-labelledby="sc">
-    <span class="eyebrow">Бонус · дыра, которой нет в чек-листе</span>
-    <h2 id="sc">Есть 8-я дыра. Она есть даже у тех, кто закрыл все 7</h2>
-    <p class="muted">Её не видно, пока смотришь на каждую часть по отдельности.</p>
-    <div class="row"><button class="btn line" id="open8" type="button" aria-expanded="false" aria-controls="b8">Открыть 8-ю дыру</button></div>
-    <div class="body" id="b8">
-      <h3>Система собрана по кусочкам</h3>
-      <p class="sign">Страница в одном сервисе, оплата в другом, подарок в третьем. По отдельности всё работает — а вместе нет.</p>
-      <p>Ссылка из бота ведёт на старую страницу. После оплаты человек не понимает, куда идти. Подарок обещает одно, а платный продукт — про другое. Каждый такой стык тихо съедает покупателей, и ни одна галочка в чек-листе этого не покажет.</p>
-      <div><div class="lbl">Как закрыть</div>
-        <ul class="fix">
-          <li>Собрать всё в одну цепочку: Reels → кодовое слово → подарок → сообщения → страница → оплата → файл.</li>
-          <li>Пройти её самой как покупатель, с телефона, от первого касания до файла.</li>
-          <li>Чинить стыки, а не отдельные куски.</li>
-        </ul>
+<section class="hero pad" id="top">
+  <div class="in">
+    <div class="hero-text">
+      <span class="eyebrow">✨ Сайты для мастеров, экспертов и малого бизнеса</span>
+      <h1>Сайт, который <span class="c">продаёт,</span> пока вы <span class="box">спите</span></h1>
+      <p class="hero-sub">Делаю странные, смелые и красивые сайты <b>быстро и недорого</b>. Ваши клиенты сразу видят цены, работы и кнопку записи, а не теряются в переписке.</p>
+      <div class="hero-row">
+        <a class="btn btn-coral" href="#contact">Хочу сайт 🔥</a>
+        <div class="price-sticker"><small>🔥 Цена со скидкой</small><s>8 000 ₽</s><span>от 5 000 ₽</span></div>
       </div>
-      <p class="punch">Поэтому большой гайд — не ещё 7 советов. Это одна система, собранная по шагам, где каждая часть подогнана к следующей.</p>
+      <span class="note-hand">↳ готово за 3–7 дней ⏱️ без предоплаты всей суммы</span>
     </div>
-  </section>
+    <div class="stage" aria-hidden="true">
+      <div class="arch"></div>
+      <div class="strip torn"></div>
+      <div class="fan"></div>
+      <div class="ring"></div>
+      <img src="natalya-cut.webp" alt="" width="900" height="1125">
+      <span class="bubble b3"><b>★</b>Дизайн, который запоминают</span>
+      <span class="bubble b1"><b>✓</b>+ заявки с сайта</span>
+      <span class="bubble b2"><b>₽</b>от 5 000</span>
+    </div>
+  </div>
+</section>
 
-  <section class="offer" id="offer" aria-labelledby="of">
-    <span class="eyebrow">Следующий шаг</span>
-    <h2 id="of">Здесь — что чинить. В большом гайде — как.</h2>
-    <p>«Система продаж» — пошаговая сборка системы, которая продаёт твой гайд без тебя. Всё, что было под 🔒 выше:</p>
-    <ul class="fix">
-      <li>шаблон страницы продукта — блоки по порядку и примеры заголовков</li>
-      <li>оплата в одну кнопку: как подключить и проверить до запуска</li>
-      <li>автовыдача файла и текст сообщения, которое приходит с ним</li>
-      <li>формула подарка, который ведёт к покупке, а не заменяет её</li>
-      <li>как сделать, чтобы контакты сохранялись сами</li>
-      <li>готовые тексты цепочки из 4 сообщений</li>
-      <li>таблица цифр с подсказками, что чинить при каждом провале</li>
-    </ul>
-    <div class="split">
-      <div><div class="lbl" style="color:var(--accent-ink);opacity:.7">Подойдёт, если</div><p>гайд или курс уже есть (или почти готов), а продажи идут через переписку вручную.</p></div>
-      <div><div class="lbl" style="color:var(--accent-ink);opacity:.7">Не подойдёт, если</div><p>ищешь идею продукта с нуля — здесь про то, как продавать готовое.</p></div>
-    </div>
-    <div class="price"><b>640 ₽</b><span>Меньше, чем одна продажа, которую ты сейчас теряешь.</span></div>
-    <p>Напиши мне в Direct слово <span class="kw">СИСТЕМА</span> — пришлю ссылку на оплату. Доступ откроется сразу после оплаты.</p>
-    <div class="row">
-      <a class="btn dark" href="https://ig.me/m/naruk_uro" target="_blank" rel="noopener">Написать СИСТЕМА в Direct</a>
-      <button class="btn ghost" id="copy" type="button">Скопировать слово</button>
-      <span class="copied" id="copied" hidden>Скопировано</span>
-    </div>
-  </section>
-
-  <footer>
-    <p>Хочешь, чтобы я собрала всё за тебя под ключ? Напиши в Direct <b class="fg">РАЗБОР</b>.</p>
-    <p>Наталья · Автоворонки и боты · @naruk_uro</p>
-  </footer>
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>💅 Маникюр</span><span>👁️ Брови</span><span>📚 Репетиторы</span><span>🧠 Психологи</span><span>☕ Кофейни</span><span>🏠 Риелторы</span><span>📸 Фотографы</span><span>💈 Барбершопы</span><span>💐 Флористы</span><span>💪 Тренеры</span>
+    <span>💅 Маникюр</span><span>👁️ Брови</span><span>📚 Репетиторы</span><span>🧠 Психологи</span><span>☕ Кофейни</span><span>🏠 Риелторы</span><span>📸 Фотографы</span><span>💈 Барбершопы</span><span>💐 Флористы</span><span>💪 Тренеры</span>
+  </div>
 </div>
 
+<section class="section pad">
+  <div class="in">
+    <span class="eyebrow">🤔 Узнаёте себя?</span>
+    <h2 class="h2" style="margin-top:14px">Клиенты есть. Но половина <span style="color:var(--coral)">тихо уходит</span></h2>
+    <div class="pain-grid">
+      <div class="pain"><q>Сколько стоит? 💸</q><p>Вы отвечаете через час, а человек уже записался к тому, у кого цены видно сразу.</p></div>
+      <div class="pain"><q>А где вы находитесь? 📍</q><p>Одни и те же вопросы каждый день. Вы отвечаете вместо того, чтобы работать.</p></div>
+      <div class="pain"><q>Скиньте примеры работ 📷</q><p>Листать ленту в поисках нужного фото никто не хочет. Клиент закрывает приложение.</p></div>
+      <div class="pain"><q>Аккаунт заблокирован 😱</q><p>Годы работы, подписчики и отзывы исчезают за один день. А сайт остаётся вашим.</p></div>
+      <div class="pain"><q>Вас нет в Яндексе 🔍</q><p>Люди ищут «маникюр рядом», «репетитор по математике». И находят ваших конкурентов.</p></div>
+      <div class="pain pain-cta"><span class="hand">Сайт решает всё это сразу 🙌</span><p>Он отвечает на вопросы, показывает работы и ведёт к записи 24 часа в сутки.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section slab pad" id="why">
+  <div class="in why-wrap">
+    <div>
+      <span class="eyebrow">💡 Почему это важно</span>
+      <h2 class="h2" style="margin-top:14px">Instagram — это витрина. Сайт — ваш магазин</h2>
+      <p class="big-quote">В ленте вас <em>листают.</em> На сайте вас <em>выбирают.</em></p>
+      <span class="note-hand">и это разница в деньгах 💰</span>
+    </div>
+    <div class="why-list">
+      <div class="why-item"><b>⏱️ Клиент решает за 5 секунд</b><span>Если с первого экрана непонятно, кто вы и сколько стоит, он уходит. Сайт отвечает раньше, чем возникает вопрос.</span></div>
+      <div class="why-item"><b>💎 Вы выглядите дороже</b><span>Свой сайт сразу ставит вас выше тех, у кого только профиль и ссылка в шапке. Можно спокойно поднимать цены.</span></div>
+      <div class="why-item"><b>🔍 Вас находят в поиске</b><span>Сайт приводит людей из Яндекса и с карт, а не только подписчиков. Это новые клиенты без рекламы.</span></div>
+      <div class="why-item"><b>🔐 Это ваша собственность</b><span>Никакие правила соцсетей и блокировки его не отнимут. Всё, что вы строите, остаётся с вами.</span></div>
+      <div class="why-item"><b>🌙 Работает, пока вы заняты</b><span>Пока вы с клиентом, на занятии или спите, сайт рассказывает о вас и собирает записи.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section pad" id="works">
+  <div class="in">
+    <div class="works-head">
+      <div>
+        <span class="eyebrow">🦄 Самые странные и крутые решения</span>
+        <h2 class="h2" style="margin-top:14px">Ни одного скучного шаблона 🙅‍♀️</h2>
+      </div>
+      <p class="lead">Нежный салон, дерзкая студия маникюра, яркий репетитор, уютная кофейня. У каждого бизнеса свой характер, и сайт должен его показывать. Наведите, чтобы пролистать.</p>
+    </div>
+    <div class="works">
+      <a class="work" href="site-nails.webp" target="_blank" rel="noopener"><div class="shot"><span class="tape"></span><img src="site-nails.webp" alt="Концепт сайта студии маникюра «Не по правилам»" loading="lazy"></div><b>💅 «Не по правилам»</b><span>Студия маникюра · коллаж и хром</span></a>
+      <a class="work" href="site-salon.webp" target="_blank" rel="noopener"><div class="shot"><span class="tape"></span><img src="site-salon.webp" alt="Концепт сайта салона красоты «Тише»" loading="lazy"></div><b>🌿 «Тише»</b><span>Салон красоты · премиальный минимализм</span></a>
+      <a class="work" href="site-tutor.webp" target="_blank" rel="noopener"><div class="shot"><span class="tape"></span><img src="site-tutor.webp" alt="Концепт сайта репетитора «Точка понимания»" loading="lazy"></div><b>📐 «Точка понимания»</b><span>Репетитор · яркий и понятный</span></a>
+      <a class="work" href="site-coffee.webp" target="_blank" rel="noopener"><div class="shot"><span class="tape"></span><img src="site-coffee.webp" alt="Концепт сайта кофейни «За углом»" loading="lazy"></div><b>☕ «За углом»</b><span>Кофейня · рисованная история</span></a>
+    </div>
+    <p class="small">Показаны дизайн-концепты. Ваш сайт будет собран с нуля под ваш бизнес, тексты и фото.</p>
+  </div>
+</section>
+
+<section class="section pad" id="price" style="padding-top:24px">
+  <div class="in">
+    <span class="eyebrow">💸 Цены без сюрпризов</span>
+    <h2 class="h2" style="margin-top:14px">Хороший сайт не должен стоить как машина</h2>
+    <span class="note-hand" style="margin-top:10px">↳ цены открытия для первых клиентов 🎉</span>
+    <div class="price-grid">
+      <div class="plan">
+        <div class="plan-top"><span class="plan-kind">🚀 Старт</span><h3>Визитка</h3><span class="tagline">быстро заявить о себе</span></div>
+        <span class="old">8 000 ₽ <i>−37%</i></span>
+        <div class="sum">5 000 ₽ <small>и выше</small></div>
+        <span class="when">3–5 дней</span>
+        <ul><li>Одна яркая страница 🎨</li><li>Услуги, цены, контакты 📋</li><li>Кнопки WhatsApp и Telegram 💬</li><li>Идеально на телефоне 📱</li></ul>
+        <a class="btn btn-ink" href="#contact">Хочу визитку ✨</a>
+      </div>
+      <div class="plan hot">
+        <span class="badge">выбирают чаще 🔥🔥🔥</span>
+        <div class="plan-top"><span class="plan-kind">🔥 Хит продаж 🔥</span><h3>Лендинг</h3><span class="tagline">продаёт, пока вы работаете</span></div>
+        <span class="old">15 000 ₽ <i>−33%</i></span>
+        <div class="sum">10 000 ₽ <small>и выше</small></div>
+        <span class="when">5–7 дней</span>
+        <ul><li>Продающая страница с историей 💰</li><li>Тексты пишу сама ✍️</li><li>Отзывы, работы, ответы на вопросы ⭐</li><li>Форма заявки и 2 круга правок ✅</li></ul>
+        <a class="btn btn-ink" href="#contact">Хочу лендинг 🔥</a>
+      </div>
+      <div class="plan">
+        <div class="plan-top"><span class="plan-kind">💎 Максимум</span><h3>Мини-сайт</h3><span class="tagline">весь ваш бизнес в одном месте</span></div>
+        <span class="old">35 000 ₽ <i>−29%</i></span>
+        <div class="sum">25 000 ₽ <small>и выше</small></div>
+        <span class="when">7–14 дней</span>
+        <ul><li>3–5 страниц 📚</li><li>Каталог, галерея или прайс 🛍️</li><li>Подключение аналитики 📊</li><li>Нестандартный дизайн под ваш стиль 🦄</li></ul>
+        <a class="btn btn-ink" href="#contact">Хочу мини-сайт 💎</a>
+      </div>
+    </div>
+    <div class="extras"><span>🛠️ Поддержка от 1 000 ₽/мес</span><span>⚡ Срочно за 48 часов</span></div>
+    <div class="hosting"><span class="ic">🌐</span><div><b>Домен и хостинг под ключ 🔑</b><p>✅ Подключу сайт к вашему домену и хостингу — это уже входит в цену.</p><p>💳 Нет своего домена? Возьму всё на себя за доплату: она идёт в счёт оплаты домена и хостинга. Вам ничего не нужно настраивать.</p></div></div>
+  </div>
+</section>
+
+<section class="section pad" style="padding-top:24px">
+  <div class="in">
+    <span class="eyebrow">🛠️ Как работаем</span>
+    <h2 class="h2" style="margin-top:14px">От «хочу сайт» до первых заявок за неделю</h2>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><b>💬 Пишете «САЙТ»</b><span>В Direct. Отвечу в течение дня.</span></div>
+      <div class="step"><span class="n">2</span><b>📝 5 вопросов</b><span>Чем занимаетесь, для кого, какой стиль нравится.</span><span class="hand">15 минут</span></div>
+      <div class="step"><span class="n">3</span><b>🎨 Первый экран</b><span>Показываю стиль до того, как делать весь сайт.</span></div>
+      <div class="step"><span class="n">4</span><b>🧩 Сайт целиком</b><span>Собираю, вношу правки, проверяю на телефоне.</span></div>
+      <div class="step"><span class="n">5</span><b>🚀 Запуск</b><span>Сайт в интернете, ссылка в шапке профиля.</span><span class="hand">готово! 🎉</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section guide pad" id="guide">
+  <div class="in">
+    <span class="eyebrow">🎁 Бесплатный гайд · 2026</span>
+    <h2 class="h2" style="margin-top:14px">Проверьте свой сайт <em>за 3 минуты</em></h2>
+    <p class="lead" style="margin-top:14px">12 пунктов, по которым клиенты решают, остаться или уйти. Отмечайте, что у вас уже есть. Нет сайта совсем? Пройдите тоже и узнаете, каким он должен быть.</p>
+    <div class="guide-wrap">
+      <div class="checks" id="checks"></div>
+      <aside class="score" aria-live="polite">
+        <div class="gauge"><svg viewBox="0 0 120 120"><circle class="t" cx="60" cy="60" r="50"/><circle class="v" id="arc" cx="60" cy="60" r="50" stroke-dasharray="314.16" stroke-dashoffset="314.16"/></svg><div><span class="grade" id="grade">—</span><small id="num">0 из 12</small></div></div>
+        <div><h3 id="vt">Ваша оценка</h3><p class="sp" id="vd">Переключайте пункты, и оценка обновится.</p></div>
+        <a class="btn btn-coral" href="#contact">Исправить с Натальей ✨</a>
+      </aside>
+    </div>
+
+    <div class="formula-head">
+      <span class="eyebrow">⭐ Бонус: формула первого экрана</span>
+      <h3>Что написать вверху сайта, чтобы клиент остался</h3>
+    </div>
+    <div class="formula">
+      <div class="f"><span class="hand">шаг 1 👋</span><b>Кто вы и что делаете</b><span>Одна понятная фраза без красивостей.</span></div>
+      <div class="f"><span class="hand">шаг 2 📍</span><b>Для кого и где</b><span>Город, район или «онлайн по всей России».</span></div>
+      <div class="f"><span class="hand">шаг 3 💪</span><b>Почему вы</b><span>Одна сильная деталь: опыт, гарантия, скорость.</span></div>
+      <div class="f"><span class="hand">шаг 4 👉</span><b>Кнопка действия</b><span>«Записаться», а не «Подробнее».</span></div>
+    </div>
+    <div class="example"><span class="hand">Пример ✍️</span>«Маникюр, который держится 4 недели. Студия у м. Чистые пруды. Стерильные инструменты и кофе в подарок. → Записаться»</div>
+  </div>
+</section>
+
+<section class="section pad" id="faq">
+  <div class="in">
+    <span class="eyebrow">🙋‍♀️ Честно о сомнениях</span>
+    <h2 class="h2" style="margin-top:14px">«Мне точно нужен сайт?»</h2>
+    <div class="faq">
+      <details><summary>📱 У меня есть Instagram, зачем ещё сайт?</summary><p>Instagram хорош, чтобы вас заметили. Но решение о записи человек принимает там, где всё понятно: цены, работы, адрес, кнопка. И сайт не исчезнет, если с аккаунтом что-то случится.</p></details>
+      <details><summary>🔗 Мне хватает Taplink</summary><p>Taplink — это список ссылок. Он не продаёт, не находится в поиске и выглядит так же, как у всех. Сайт показывает ваш характер и отвечает на вопросы клиента сам.</p></details>
+      <details><summary>💸 Это ведь дорого?</summary><p>Визитка стоит от 5 000 ₽. Это часто меньше, чем одна-две записи клиентов. Сайт окупается быстро и работает годами без зарплаты и выходных.</p></details>
+      <details><summary>🤷‍♀️ Я ничего не понимаю в сайтах</summary><p>И не нужно. Вы отвечаете на 5 простых вопросов, присылаете фото, а всё остальное делаю я: тексты, дизайн, запуск. Объясняю всё простыми словами.</p></details>
+      <details><summary>😬 А если мне не понравится?</summary><p>Сначала я показываю первый экран и стиль, и только потом делаю весь сайт. Плюс в каждом пакете есть правки. Вы видите результат на каждом шаге.</p></details>
+      <details><summary>⚡ Как быстро будет готово?</summary><p>Визитка — 3–5 дней, лендинг — 5–7 дней. Если очень срочно, могу сделать за 48 часов.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final pad" id="contact">
+  <div class="in">
+    <div class="final-box">
+      <div>
+        <span class="word">Ну что, делаем? 🚀</span>
+        <h2>Ваш сайт может работать уже на следующей неделе 🔥</h2>
+        <p>Напишите мне в Direct слово «САЙТ». Расскажу, какой вариант подойдёт именно вам, и назову точную цену. Это ни к чему не обязывает.</p>
+      </div>
+      <div class="final-side">
+        <div class="handle"><code id="h">@naruk_uro</code><button class="btn btn-white" id="copy" type="button">Скопировать</button></div>
+        <a class="btn btn-line" href="https://instagram.com/naruk_uro" target="_blank" rel="noopener">💌 Написать в Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+<p class="foot pad">Наталья · сайты быстро, красиво и недорого 💜🧡💛💚</p>
+
 <script>
-const HOLES = [
- {t:"Ссылка в шапке ведёт в никуда",
-  sign:"Ссылка открывает PDF, Таплинк с десятью кнопками или «пиши в Direct».",
-  why:"Человек пришёл на эмоции от поста. Если за 10 секунд он не понял, что внутри и сколько стоит, он закрывает страницу и не возвращается.",
-  fix:["Одна страница под один продукт.","Заголовок — результат, а не название: что изменится у человека.","Для кого: 3 коротких пункта.","Что внутри: содержание или 2–3 скриншота страниц.","Цена и одна кнопка «Купить»."],
-  task:"Напиши заголовок по формуле: «[Результат] без [главной боли] за [срок]». Например: «Меню на неделю без подсчёта калорий за 20 минут».",
-  lock:"Шаблон страницы продукта: какие блоки, в каком порядке и примеры заголовков для разных ниш.",
-  hook:"Допустим, страница идеальная и человек нажал «Купить». Дальше начинается самое опасное место.",
-  ok:"По ссылке в шапке за 10 секунд понятно, что внутри, для кого и сколько стоит"},
- {t:"«Переведи на карту и пришли скрин»",
-  sign:"Оплата идёт через перевод, а потом переписка: «оплатила», «проверь», «скинь файл».",
-  why:"Каждый лишний шаг — место, где человек передумывает. Вечером он хотел купить, а утром уже нет.",
-  fix:["Кнопка оплаты через платёжный сервис.","Покупатель получает чек автоматически.","От «хочу» до «оплатил» — не больше трёх нажатий."],
-  task:"Купи свой гайд сама с телефона и посчитай шаги. Всё, что больше трёх нажатий, — кандидат на удаление.",
-  lock:"Как подключить оплату в одну кнопку и проверить её до запуска — по шагам, со скриншотами.",
-  hook:"Деньги пришли. Кажется, всё? Нет — именно здесь появляются вопросы «где мой файл?» и возвраты.",
-  ok:"Оплата — одной кнопкой, без «переведи на карту»"},
- {t:"Файл отправляешь руками",
-  sign:"После оплаты ты сама пишешь человеку и отправляешь файл.",
-  why:"Купили в два часа ночи — получили утром. За это время приходят сомнения, вопросы и просьбы вернуть деньги.",
-  fix:["Выдача сразу после оплаты: бот, письмо или страница «Спасибо» со ссылкой.","В сообщении с файлом — «что сделать первым», чтобы человек сразу начал пользоваться.","Ссылка на файл ведёт только покупателя, а не открыта всему интернету."],
-  task:"Представь, что купили в 2:00 ночи. Что человек увидит в 2:01? Если ничего — это первое, что нужно починить.",
-  lock:"Настройка автовыдачи и готовый текст сообщения, которое приходит вместе с файлом.",
-  hook:"Первые три дыры — про тех, кто уже готов платить. Но таких меньшинство. Что с остальными?",
-  ok:"Файл приходит сразу после оплаты, без твоего участия"},
- {t:"Нет бесплатного шага",
-  sign:"В постах сразу «купи гайд», без подарка и кодового слова.",
-  why:"С первого касания покупают редко. Человеку нужно сначала попробовать твою пользу бесплатно и убедиться, что ты понимаешь его проблему.",
-  fix:["Маленький подарок на 5–15 минут: чек-лист, шаблон, мини-урок.","Он решает одну узкую задачу и логично ведёт к платному продукту.","Выдаётся по кодовому слову в комментариях или в Direct."],
-  task:"Придумай 3 идеи подарка. Подсказка: возьми одну главу своего гайда и сделай из неё чек-лист.",
-  lock:"Формула подарка, который ведёт к покупке, а не заменяет её. Частая ошибка — отдать бесплатно слишком много.",
-  hook:"Подарок забрали. А теперь вопрос, на который почти ни у кого нет ответа.",
-  ok:"Есть бесплатный шаг: подарок по кодовому слову"},
- {t:"Контакты теряются",
-  sign:"Подарок ушёл в Direct — и всё, человек растворился в переписках.",
-  why:"Direct — не база клиентов. Через неделю ты не вспомнишь, кто забирал подарок, и не сможешь им ничего предложить.",
-  fix:["Подарок выдаёт бот или рассылка — так контакт сохраняется.","Видно, откуда пришёл человек и что он уже получил.","К тем, кто не купил сразу, можно вернуться позже."],
-  task:"Ответь честно: сколько человек забрали подарок за последний месяц? Можешь ли ты написать им всем прямо сейчас?",
-  lock:"Как настроить бота, чтобы контакты сохранялись сами и к ним можно было вернуться.",
-  hook:"Контакты есть. Самая дорогая ошибка — дальше.",
-  ok:"Контакты сохраняются в боте или рассылке, а не теряются в Direct"},
- {t:"После подарка — тишина",
-  sign:"Человек получил бесплатный материал, и больше ему ничего не приходит.",
-  why:"Подарок открывает дверь, но не продаёт. Продают следующие несколько сообщений, в которых человек узнаёт тебя и видит результат.",
-  fix:["День 0 — подарок и «с чего начать».","День 1 — твоя история: почему ты этим занимаешься.","День 2 — кейс или отзыв с конкретным результатом.","День 3 — предложение: что внутри платного продукта, цена, кнопка."],
-  task:"Напиши сообщение для дня 1: 5–7 предложений о том, с какой проблемой ты сама когда-то столкнулась.",
-  lock:"Готовые тексты всех 4 сообщений — меняешь только детали под себя.",
-  hook:"Последнюю дыру не видно вообще. Поэтому её почти никто не чинит.",
-  ok:"После подарка человеку приходят 2–4 сообщения"},
- {t:"Нет цифр",
-  sign:"Ты не знаешь, сколько людей нажали на ссылку, забрали подарок и купили.",
-  why:"Без цифр не видно, где теряются люди. Можно месяц переписывать гайд, хотя проблема была в кнопке оплаты.",
-  fix:["Раз в неделю записывай 4 цифры: переходы по ссылке → забрали подарок → открыли страницу продукта → купили.","Смотри, где самый большой провал между соседними шагами, и чини только его.","Разные ссылки для разных постов — так видно, какой пост приводит покупателей."],
-  task:"Заведи таблицу с 4 колонками и заполни её по итогам этой недели, даже если там нули.",
-  lock:"Таблица цифр с подсказками: какой провал что означает и что чинить первым.",
-  hook:"Это 7 дыр из чек-листа. Но есть ещё одна — её в чек-листе не видно.",
-  ok:"Ты видишь цифры: переходы → подарки → покупки"}
+const items=[
+ ["За 5 секунд понятно, что вы делаете","И для кого: «Маникюр у метро Чистые пруды»."],
+ ["Кнопка записи видна сразу","Без прокрутки и поиска."],
+ ["Есть живое фото","Вы, ваши работы или место, а не сток."],
+ ["Удобно с телефона","Текст читается, кнопки легко нажать."],
+ ["Открывается быстрее 3 секунд","Проверьте на мобильном интернете."],
+ ["Связь в одно нажатие","WhatsApp, Telegram или звонок."],
+ ["Указаны цены","Хотя бы «от» какой суммы."],
+ ["Понятно, как проходит работа","3–5 шагов от заявки до результата."],
+ ["Есть адрес и график","Или зона работы, если вы онлайн."],
+ ["Есть отзывы","Хотя бы 3 настоящих, с именами."],
+ ["Есть примеры работ","Фото, «до/после», кейсы."],
+ ["Сайт находится в Яндексе","По вашей услуге и городу."]
 ];
-const KEY = 'sevenHoles.checks';
-let saved = [];
-try { saved = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { saved = []; }
-
-const items = document.getElementById('items');
-const holes = document.getElementById('holes');
-HOLES.forEach((h, i) => {
-  const id = 'c' + (i + 1);
-  const lab = document.createElement('label');
-  lab.setAttribute('for', id);
-  lab.innerHTML = `<input type="checkbox" id="${id}"><span>${h.ok}</span>`;
-  items.appendChild(lab);
-  const box = lab.querySelector('input');
-  box.checked = !!saved[i];
-  box.addEventListener('change', update);
-
-  const s = document.createElement('article');
-  s.className = 'hole'; s.id = 'd' + (i + 1);
-  s.innerHTML = `<div class="heads"><span class="num">Дыра ${i + 1} из 7</span><span class="tagmine">Твоя главная дыра</span></div><h3>${h.t}</h3>
-    <div><div class="lbl">Признак</div><p class="sign">${h.sign}</p></div>
-    <div><div class="lbl">Почему теряешь деньги</div><p>${h.why}</p></div>
-    <div><div class="lbl">Как закрыть</div><ul class="fix">${h.fix.map(x => `<li>${x}</li>`).join('')}</ul></div>
-    <div class="task"><div class="lbl">Задание на 15 минут</div><p>${h.task}</p></div>
-    <div class="lock"><span class="ic" aria-hidden="true">🔒</span><p><b>В большом гайде:</b> ${h.lock} <a href="#offer">Что ещё внутри →</a></p></div>
-    <p class="hook">${h.hook}</p>`;
-  holes.appendChild(s);
-});
-
-function update() {
-  const boxes = [...items.querySelectorAll('input')];
-  const n = boxes.filter(b => b.checked).length;
-  try { localStorage.setItem(KEY, JSON.stringify(boxes.map(b => b.checked))); } catch (e) {}
-  document.getElementById('cnt').textContent = n + '/7';
-  const v = document.getElementById('verdict');
-  const firstOpen = boxes.findIndex(b => !b.checked);
-  const go = document.getElementById('go');
-  document.querySelectorAll('.hole').forEach(el => el.classList.remove('mine'));
-  if (firstOpen >= 0) {
-    document.getElementById('d' + (firstOpen + 1)).classList.add('mine');
-    go.href = '#d' + (firstOpen + 1);
-    go.textContent = 'Показать мою главную дыру ↓';
-  } else {
-    go.href = '#secret';
-    go.textContent = 'Все 7 закрыты? Проверь 8-ю ↓';
-  }
-  if (n === 7) v.textContent = 'Сильно. Но у тех, кто закрыл все 7, обычно остаётся ещё одна — она внизу.';
-  else if (n >= 5) v.textContent = 'Система почти есть. Осталось ' + (7 - n) + ' — начни с дыры ' + (firstOpen + 1) + '.';
-  else if (n >= 3) v.textContent = 'Ты теряешь заметную часть покупателей. Начни с дыры ' + (firstOpen + 1) + ' — она стоит первой не случайно.';
-  else v.textContent = 'Продажи, если они есть, идут вопреки системе. Хорошая новость: всё чинится по шагам. Начни с дыры ' + (firstOpen + 1) + '.';
-  document.getElementById('cnt').style.color = n >= 5 ? 'var(--accent)' : n >= 3 ? 'var(--warn)' : 'var(--bad)';
+const wrap=document.getElementById('checks');
+items.forEach((it,i)=>{const l=document.createElement('label');l.className='ck';l.htmlFor='k'+i;l.innerHTML='<span><strong></strong><small></small></span><input type="checkbox" id="k'+i+'"><span class="sw"></span>';l.querySelector('strong').textContent=it[0];l.querySelector('small').textContent=it[1];wrap.appendChild(l)});
+const boxes=[...wrap.querySelectorAll('input')];const C=314.16;
+function save(){try{localStorage.setItem('nat-check',JSON.stringify(boxes.map(b=>b.checked)))}catch(e){}}
+function load(){try{const s=JSON.parse(localStorage.getItem('nat-check')||'null');if(Array.isArray(s))s.forEach((v,i)=>{if(boxes[i])boxes[i].checked=!!v})}catch(e){}}
+function update(){
+  const n=boxes.filter(b=>b.checked).length,arc=document.getElementById('arc');
+  arc.style.strokeDashoffset=C-C*n/12;arc.style.stroke=n>=10?'var(--mint)':n>=6?'var(--sun)':'var(--coral)';
+  document.getElementById('num').textContent=n+' из 12';
+  document.getElementById('grade').textContent=n===0?'—':n>=11?'A':n>=8?'B':n>=5?'C':'D';
+  const t=document.getElementById('vt'),d=document.getElementById('vd');
+  if(n===0){t.textContent='Ваша оценка';d.textContent='Переключайте пункты, и оценка обновится.'}
+  else if(n>=11){t.textContent='Сайт работает отлично';d.textContent='Осталось вести на него людей.'}
+  else if(n>=8){t.textContent='Хорошая база';d.textContent='Но часть клиентов всё ещё уходит.'}
+  else if(n>=5){t.textContent='Сайт теряет клиентов';d.textContent='Пара исправлений быстро даст заявки.'}
+  else{t.textContent='Сайт почти не продаёт';d.textContent='Похоже, пора делать новый.'}
 }
-update();
-
-const sec = document.getElementById('secret');
-document.getElementById('open8').addEventListener('click', e => {
-  sec.dataset.open = '1';
-  e.currentTarget.setAttribute('aria-expanded', 'true');
-  e.currentTarget.remove();
-});
-
-const bar = document.getElementById('bar');
-addEventListener('scroll', () => {
-  const h = document.documentElement.scrollHeight - innerHeight;
-  bar.style.width = (h > 0 ? Math.min(100, scrollY / h * 100) : 0) + '%';
-}, {passive: true});
-
-document.getElementById('copy').addEventListener('click', async () => {
-  const c = document.getElementById('copied');
-  try { await navigator.clipboard.writeText('СИСТЕМА'); c.textContent = 'Скопировано'; }
-  catch (e) { c.textContent = 'Слово: СИСТЕМА'; }
-  c.hidden = false; setTimeout(() => c.hidden = true, 2200);
-});
+load();update();boxes.forEach(b=>b.addEventListener('change',()=>{update();save()}));
+document.getElementById('copy').addEventListener('click',async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText('@naruk_uro');b.textContent='Готово'}catch(err){const r=document.createRange();r.selectNodeContents(document.getElementById('h'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Выделено'}setTimeout(()=>b.textContent='Скопировать',1800)});
 </script>
-</body>
-</html>
+</body></html>
